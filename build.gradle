@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-group 'com.shopping'
+group 'com.starsharp'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -46,7 +46,7 @@ dependencies {
 
 serenity {
     // Specify the root package of any JUnit acceptance tests to appear in the Serenity report
-    testRoot = "starter"
+    testRoot = "com.shopping"
     // Specify the root directory of any Cucumber feature files
     requirementsDir = "src/test/resources/features"
 }
