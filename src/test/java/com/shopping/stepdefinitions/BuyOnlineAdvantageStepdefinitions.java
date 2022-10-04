@@ -31,16 +31,16 @@ public class BuyOnlineAdvantageStepdefinitions {
     }
 
 
-    @Given("que accedo a la plataforma de compras en linea advantage")
-    public void queAccedoALaPlataformaDeComprasEnLineaAdvantage() {
+    @Given("that I access the advantage online shopping platform")
+    public void thatIAccessTheAdvantageOnlineShoppingPlatform() {
         OnStage.theActorInTheSpotlight().wasAbleTo(
                 Open.browserOn().the(HomePage.class),
                 WaitUntil.the(CHECK_BUTTON_SPECIAL_OFFER, WebElementStateMatchers.isClickable()).forNoMoreThan(20).seconds()
         );
     }
 
-    @When("que realizo el registro para la creacion de la cuenta")
-    public void queRealizoElRegistroParaLaCreacionDeLaCuenta(List<List<String>> dataAccount) {
+    @When("who made the registration for the creation of the account")
+    public void whoMadeTheRegistrationForTheCreationOfTheAccount(List<List<String>> dataAccount) {
         AccountModel Account = new AccountModel(dataAccount.get(0));
         OnStage.theActorInTheSpotlight().attemptsTo(
                 CreateAccount.withData(Account)
@@ -48,8 +48,8 @@ public class BuyOnlineAdvantageStepdefinitions {
 
     }
 
-    @When("agrego el articulo al carro procedo al pago")
-    public void agregoElArticuloAlCarroProcedoAlPago(List<List<String>> dataAccount) {
+    @When("I add the item to the cart I proceed to the payment")
+    public void IAddTheItemToTheCartIProceedToThePayment(List<List<String>> dataAccount) {
         AccountModel account = new AccountModel(dataAccount.get(0).get(0), dataAccount.get(0).get(1));
         String category = dataAccount.get(0).get(2);
         String product = dataAccount.get(0).get(3);
@@ -60,13 +60,13 @@ public class BuyOnlineAdvantageStepdefinitions {
 
     }
 
-    @Then("verifico que se creo la cuenta {string}")
-    public void verificoQueSeCreoLaCuenta(String userName) {
+    @Then("I verify that the account was created {string}")
+    public void IVerifyThatTheAccountWasCreated(String userName) {
         OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateUser.verify(userName)));
     }
 
-    @Then("Verifico la orden de pago con el producto {string}")
-    public void VerificoLaOrdenDePagoConElProducto(String userName) {
+    @Then("I verify the payment order with the product {string}")
+    public void IVerifyThePaymentOrderWithTheProduct(String userName) {
         OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateProduct.verify(userName)));
     }
 }

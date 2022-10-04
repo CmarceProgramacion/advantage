@@ -1,33 +1,32 @@
-#Autos: Claudia Nieto
+#Author: Claudia Nieto
 #Email: cmarce86@yahoo.es
 
 
-Feature: Validar que atraves de una cuenta creada se realice una compra en la plataforma advantage
-  como usuario de la plataforma
-  Quiero registrarme en la plataforma advantage
-  Para poder realizar compras en online
-  #como- quiero -para
+Feature: Validate that through a created account a purchase is made on the advantage platform
+  As a user of the platform
+  I want to register on the advantage platform
+  To be able to make purchases online
 
-  Background:Acceder a la plataforma advantage
-    Given que accedo a la plataforma de compras en linea advantage
+
+  Background:Access the advantage platform
+    Given that I access the advantage online shopping platform
 
   @CaseOne
-  Scenario Outline: Validar la creacion de una cuenta
-    When que realizo el registro para la creacion de la cuenta
+  Scenario Outline: Validate the creation of an account
+    When who made the registration for the creation of the account
       | <userName> | <email> | <password> | <firstsName> | <lastName> | <phoneNumber> | <country> | <city> | <address> | <state> | <postalCode> |
-    Then verifico que se creo la cuenta "<userName>"
+    Then I verify that the account was created "<userName>"
     Examples:
       | userName | email                        | password     | firstsName | lastName | phoneNumber | country | city  | address       | state  | postalCode |
       | clau70   | toffofruppufe-27@yopmail.com | Claudia12345 | Milena     | Pineda   | 12345678910 | Armenia | Bello | Cra 5 N 68-49 | Estado | 009        |
 
 
   @CaseTwo
-  Scenario Outline: Validar compra de la productos exitoso
-    When agrego el articulo al carro procedo al pago
+  Scenario Outline: Validate successful product purchase
+    When I add the item to the cart I proceed to the payment
       | <userName> | <password> |<category>| <nameProduct> |
 
-   Then Verifico la orden de pago con el producto "<nameProduct>"
-
+   Then I verify the payment order with the product "<nameProduct>"
     Examples:
       | userName | password     | category | nameProduct                |
       | clau70   | Claudia12345 | laptops  | HP ENVY - 17T TOUCH LAPTOP |

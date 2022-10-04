@@ -1,6 +1,5 @@
 package com.shopping.interactions;
 
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
