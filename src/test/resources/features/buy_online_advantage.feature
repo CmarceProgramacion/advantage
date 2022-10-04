@@ -24,11 +24,11 @@ Feature: Validar que atraves de una cuenta creada se realice una compra en la pl
   @CaseTwo
   Scenario Outline: Validar compra de la productos exitoso
     When agrego el articulo al carro procedo al pago
-      | <userName> | <password> |<nameProduct>|
+      | <userName> | <password> |<category>| <nameProduct> |
 
- #   Then Verifico la compra exitosa
+   Then Verifico la orden de pago con el producto "<nameProduct>"
 
     Examples:
-      | userName | password     | nameProduct |
-      | clau70   | Claudia12345 | laptops     |
+      | userName | password     | category | nameProduct                |
+      | clau70   | Claudia12345 | laptops  | HP ENVY - 17T TOUCH LAPTOP |
 

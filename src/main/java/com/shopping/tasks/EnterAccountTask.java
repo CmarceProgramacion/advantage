@@ -12,7 +12,8 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import static com.shopping.userinterfaces.CreateAccountPage.BUTTON_USER;
 import static com.shopping.userinterfaces.HomePage.*;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 
 public class EnterAccountTask implements Task {
@@ -36,7 +37,6 @@ public class EnterAccountTask implements Task {
                 WaitUntil.the((BUTTON_SIGN_IN_LOGIN), isClickable()),
                 Click.on(BUTTON_SIGN_IN_LOGIN),
                 WaitUntil.the(BUTTON_USER.of(accountModel.getUserName()), isVisible()).forNoMoreThan(20).seconds()
-
         );
 
     }

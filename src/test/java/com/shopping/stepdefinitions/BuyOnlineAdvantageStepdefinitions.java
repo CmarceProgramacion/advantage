@@ -1,6 +1,7 @@
 package com.shopping.stepdefinitions;
 
 import com.shopping.models.AccountModel;
+import com.shopping.questions.ValidateProduct;
 import com.shopping.questions.ValidateUser;
 import com.shopping.tasks.BuyProductTask;
 import com.shopping.tasks.CreateAccount;
@@ -49,12 +50,12 @@ public class BuyOnlineAdvantageStepdefinitions {
 
     @When("agrego el articulo al carro procedo al pago")
     public void agregoElArticuloAlCarroProcedoAlPago(List<List<String>> dataAccount) {
-        AccountModel account = new AccountModel(dataAccount.get(0).get(0),dataAccount.get(0).get(1));
-        String product=dataAccount.get(0).get(2);
+        AccountModel account = new AccountModel(dataAccount.get(0).get(0), dataAccount.get(0).get(1));
+        String category = dataAccount.get(0).get(2);
+        String product = dataAccount.get(0).get(3);
         OnStage.theActorInTheSpotlight().attemptsTo(
                 EnterAccountTask.withData(account),
-                BuyProductTask.withData(product)
-
+                BuyProductTask.withData(category, product)
         );
 
     }
@@ -62,5 +63,10 @@ public class BuyOnlineAdvantageStepdefinitions {
     @Then("verifico que se creo la cuenta {string}")
     public void verificoQueSeCreoLaCuenta(String userName) {
         OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateUser.verify(userName)));
+    }
+
+    @Then("Verifico la orden de pago con el producto {string}")
+    public void VerificoLaOrdenDePagoConElProducto(String userName) {
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(ValidateProduct.verify(userName)));
     }
 }

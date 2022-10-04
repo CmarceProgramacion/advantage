@@ -31,20 +31,10 @@ public class FindProductAction implements Interaction {
         List<WebElementFacade> list = target.resolveAllFor(actor);
 
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getTextContent().equals(nameProduct)) {
+            if (list.get(i).getTextContent().equalsIgnoreCase(nameProduct)) {
                 Click.on(list.get(i)).performAs(actor);
                 i = list.size();
             }
         }
-
-//        List<WebElementFacade> list = target.resolveAllFor(actor);
-//
-//        for (WebElementFacade element : list) {
-//            if (element.getTextContent().equals(nameProduct)) {
-//                Click.on(element).performAs(actor);
-//            }
-//        }
-
-
     }
 }
